@@ -23,7 +23,7 @@ You can find our changelog [here](CHANGELOG.md)
 to    
 **resource_type 'map' { gameTypes = { fs_freeroam = true } }**  
 in your fivem-map-skater or fivem-map-hipster resource.lua file.
-5. Open **resources/fs_freeroam/config.lua** to configure your CouchDB port.
+5. Open **resources/fs_freeroam/db.lua** to configure your CouchDB port.
 6. Restart your server
 
 
