@@ -12,7 +12,8 @@ Have some respect for the people that contribute to this project and don't just 
 You can find our changelog [here](CHANGELOG.md)
 
 ## Requirements
-- Essentialmode
+- [Essentialmode](https://kanersps.pw/files/essential.zip)
+- [CouchDB](http://couchdb.apache.org)
 
 ## Installation
 1. [Download](https://github.com/FiveM-Scripts/fs_freeroam/archive/master.zip)
@@ -22,15 +23,9 @@ You can find our changelog [here](CHANGELOG.md)
 to    
 **resource_type 'map' { gameTypes = { fs_freeroam = true } }**  
 in your fivem-map-skater or fivem-map-hipster resource.lua file.
-5. Add - fs_freeroam to your AutoStartResources in citmp-server.yml
-6. Open **resources/fs_freeroam/config.lua** and change your database settings.
-7. Add a new column to your users table personalvehicle VARCHAR(60)
-8. Restart your server
+5. Open **resources/fs_freeroam/config.lua** to configure your CouchDB port.
+6. Restart your server
 
-## Upgrade
-Since the last upgrade we integrated the vehicle shop directly in fs_freeroam.   
-For that reason you need to remove es_vehshop from your citmp-server.yml.   
-After that Open **resources/fs_freeroam/config.lua** and change your database settings.   
 
 ## Contribute
 if you are a developer and  would like to contribute any help is welcome!   
@@ -42,4 +37,3 @@ The contribution guide can be found [here](CONTRIBUTING.MD).
 - All contributions you make on any of FiveM-Scripts repositories remain your intellectual property, but you hereby do not have any legal rights to take down, or pursue legally/illegaly any individual, group, company, corporation whether it is a public or private entity. You understand that and agree to open sourcing your contribution to contribute to the FiveM community to learn.
 - Contributions are made to this repository as a goodness of heart and a record kept of the contributor's contributions history for their work.
 - Violating any of the above hereby informs you that you will be removed from this community and branded as a leech.
-

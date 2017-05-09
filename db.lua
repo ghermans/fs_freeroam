@@ -1,4 +1,4 @@
-local port = 4444
+local port = 5984 -- change this if needed
 
 db = {}
 
@@ -12,7 +12,7 @@ function db.getUser(identifier, callback)
 		else
 			callback(false)
 		end
-	end, "POST", json.encode(qu), {["Content-Type"] = 'application/json'})	
+	end, "POST", json.encode(qu), {["Content-Type"] = 'application/json'})
 end
 
 function db.updateUser(identifier, update, callback)

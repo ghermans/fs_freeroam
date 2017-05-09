@@ -20,7 +20,6 @@ client_scripts {
 }
 
 server_scripts {
-  'config.lua',
   'server.lua',
   'player/commands.lua',
   'stores/vehshop_s.lua',
