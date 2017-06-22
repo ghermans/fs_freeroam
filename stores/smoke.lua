@@ -41,8 +41,9 @@ function smoketick()
             end
             -- Start mission
             if(IsControlPressed(1, 38)) then
-              TriggerServerEvent("es_freeroam:pay", tonumber(50))
-              Toxicated()
+              local amount = tonumber(50)
+              local trigger = "toxicated"
+              TriggerServerEvent("fs_freeroam:buy", amount, trigger)
               MISSION.start = true
             end
           else
@@ -67,57 +68,53 @@ function smoketick()
               end
             end)
             Citizen.Wait(120000)
-            reality()
+
+            TriggerEvent("reality")
             MISSION.start = false
           end -- end mission.start
         end -- end tick
 
-        function Toxicated()
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_DRUG_DEALER", 0, 1)
-          Citizen.Wait(5000)
-          DoScreenFadeOut(1000)
-          Citizen.Wait(1000)
-          ClearPedTasksImmediately(GetPlayerPed(-1))
-          SetTimecycleModifier("spectator5")
-          SetPedMotionBlur(GetPlayerPed(-1), true)
-          SetPedMovementClipset(GetPlayerPed(-1), "MOVE_M@DRUNK@SLIGHTLYDRUNK", true)
-          SetPedIsDrunk(GetPlayerPed(-1), true)
-          DoScreenFadeIn(1000)
-        end
+        RegisterNetEvent("toxicated")
+        AddEventHandler("toxicated", function()
+          Citizen.CreateThread(function()
+            Citizen.Trace("Player is getting high\n")
+            TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_DRUG_DEALER", 0, 1)
+            Citizen.Wait(10000)
+            DoScreenFadeOut(1000)
+            Citizen.Wait(1000)
+            SetTimecycleModifier("stoned")
+            SetPedMotionBlur(GetPlayerPed(-1), true)
+            SetPedMovementClipset(GetPlayerPed(-1), "MOVE_M@DRUNK@SLIGHTLYDRUNK", true)
+            SetPedIsDrunk(GetPlayerPed(-1), true)
+            DoScreenFadeIn(1000)
+            ClearPedTasks(GetPlayerPed(-1))
+            end)
+        end)
 
-        function reality()
-          Citizen.Wait(50000)
-          DoScreenFadeOut(1000)
-          Citizen.Wait(1000)
-          DoScreenFadeIn(1000)
-          ClearTimecycleModifier()
-          ResetScenarioTypesEnabled()
-          ResetPedMovementClipset(GetPlayerPed(-1), 0)
-          SetPedIsDrunk(GetPlayerPed(-1), false)
-          SetPedMotionBlur(GetPlayerPed(-1), false)
-          -- Stop the mini mission
-          Citizen.Trace("Going back to reality\n")
-        end
+        RegisterNetEvent("reality")
+        AddEventHandler("reality", function()
+          Citizen.CreateThread(function()
+            Citizen.Wait(50000)
+            DoScreenFadeOut(1000)
+            Citizen.Wait(1000)
+            DoScreenFadeIn(1000)
+            ClearTimecycleModifier()
+            ResetScenarioTypesEnabled()
+            ResetPedMovementClipset(GetPlayerPed(-1), 0)
+            SetPedIsDrunk(GetPlayerPed(-1), false)
+            SetPedMotionBlur(GetPlayerPed(-1), false)
+            -- Stop the mini mission
+            Citizen.Trace("Back to reality\n")
+          end)
+        end)
 
         function DealText()
           DrawMarker(1, -1171.42, -1572.72, 3.6636, 0, 0, 0, 0, 0, 0, 4.0, 4.0, 2.0, 178, 236, 93, 155, 0, 0, 2, 0, 0, 0, 0)
-          ShowInfo("Press ~INPUT_CONTEXT~ to buy drugs", 0)
-        end
-
-        function DrawMissionText(m_text, showtime)
-          ClearPrints()
-          SetTextEntry_2("STRING")
-          AddTextComponentString(m_text)
-          DrawSubtitleTimed(showtime, 1)
-        end
-
-        function ShowNotification(text)
-          SetNotificationTextEntry("STRING")
-          AddTextComponentString(text)
-          DrawNotification(true, false)
+          ShowInfo(Translator.translate("eventSmoke_dealerDrugs"), 0)
         end
 
         function ShowInfo(text, state)
           SetTextComponentFormat("STRING")
-          AddTextComponentString(text)DisplayHelpTextFromStringLabel(0, state, 0, -1)
+          AddTextComponentString(text)
+          DisplayHelpTextFromStringLabel(0, state, 0, -1)
         end

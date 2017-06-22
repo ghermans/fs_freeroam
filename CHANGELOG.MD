@@ -1,6 +1,29 @@
 # Changelog
 The information about the changes can be found below.   
 
+## v0.1.5
+#### Features
+- Added the option to enable / disable blips
+- Added tow truck job  
+- Added Security Van Heists
+- Added addcash and rmcash for moderators/admins
+- Added multi lang support
+- Added random trains
+- Added new gang location
+- Players can now fly from Los santos international airport to the MC Kenzie field.
+- Added weapon store
+- Added some apartments
+- Server admins can enable / disable wanted music.
+
+#### Fixes
+- Made freeroam compatible with EssentialMode 3.2.3
+- Updated payment system
+- Differnet configuration files client_config.lua and server_config.lua
+- Server wont spawn players
+- Fixed wrong coordinates for "Lesters"
+- Fixed bug related "Smoke on the water, players can buy weed without money"
+- Fixed fleeca job
+- Refactored some code
 
 ## v0.1.4
 #### Fixes
@@ -16,6 +39,7 @@ The information about the changes can be found below.
 
 #### Fixes
 - Players now use the spawn locations from the map resource (temp fix)
+
 
 ## v0.1.2
 #### Features

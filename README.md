@@ -1,35 +1,21 @@
-# fs_freeroam v0.1.4
+# fs_freeroam
+[![Version](https://img.shields.io/badge/release-0.1.5-green.svg)](https://github.com/FiveM-Scripts/fs_freeroam)
+[![License](https://img.shields.io/badge/license-GPL3-blue.svg)](LICENSE)
 <a href="https://discord.gg/eNJraMf"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
-fs_freeroam is a FiveM game mode with a money system.  
-The player can receive jobs, survivals, buy buildings, drugs and many more.
+## Changelog
+Check our [changelog](CHANGELOG.MD) for the latest changes.
 
- **Note:**   
+## Documentation
+Go to our [documentation guide](https://fs-freeroam.readme.io) if you need help with your installation or with configuring fs_freeroam.
+
+## Community   
 This project brings developers together to work on a script that can be used for different types of servers.  
 Have some respect for the people that contribute to this project and don't just copy/paste our time and work that we put in this project, instead [contribute](CONTRIBUTING.MD).
 
-## Changelog
-You can find our changelog [here](CHANGELOG.md)
-
-## Requirements
-- [Essentialmode](https://kanersps.pw/files/essential.zip)
-- [CouchDB](http://couchdb.apache.org)
-
-## Installation
-1. [Download](https://github.com/FiveM-Scripts/fs_freeroam/archive/master.zip)
-2. Extract the folder and rename it to fs_freeroam
-3. Copy it to your resources folder
-4. Change **resource_type 'map' { gameTypes = { fivem = true } }**   
-to    
-**resource_type 'map' { gameTypes = { fs_freeroam = true } }**  
-in your fivem-map-skater or fivem-map-hipster resource.lua file.
-5. Open **resources/fs_freeroam/db.lua** to configure your CouchDB port.
-6. Restart your server
-
-
 ## Contribute
 if you are a developer and  would like to contribute any help is welcome!   
-The contribution guide can be found [here](CONTRIBUTING.MD).
+Please read the contribution guide, it can be found [here](CONTRIBUTING.MD).
 
 ## Disclaimer
 - Everything submitted to the repository must be in source.That meaning any soft of obfuscated files, binary files, passworded files, and/or encrypted files will immediately removed (unless the file is a representation of the latest compiled **compatible AND working version** of which this file must only be binary source and include a virustotal scan).

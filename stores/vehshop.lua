@@ -17,28 +17,28 @@ local vehshop = {
 		scale = 0.4,
 		font = 0,
 		["main"] = {
-			title = "CATEGORIES",
+			title = Translator.translate("vehshop_categoryTitle"),
 			name = "main",
 			buttons = {
-				{name = "Vehicles", description = ""},
-				{name = "Motorcycles", description = ""},
+				{name = Translator.translate("vehshop_vehicles"), description = ""},
+				{name = Translator.translate("vehshop_motorcycles"), description = ""},
 			}
 		},
 		["vehicles"] = {
-			title = "VEHICLES",
+			title = Translator.translate("vehshop_vehicleTitle"),
 			name = "vehicles",
 			buttons = {
-				{name = "Compacts", description = ''},
-				{name = "Coupes", description = ''},
-				{name = "Sedans", description = ''},
-				{name = "Sports", description = ''},
-				{name = "Sports Classics", description = ''},
-				{name = "Super", description = ''},
-				{name = "Muscle", description = ''},
-				{name = "Off-Road", description = ''},
-				{name = "SUVs", description = ''},
-				{name = "Vans", description = ''},
-				{name = "Cycles", description = ''},
+				{name = Translator.translate("vehshop_compacts"), description = ''},
+				{name = Translator.translate("vehshop_coupes"), description = ''},
+				{name = Translator.translate("vehshop_sedans"), description = ''},
+				{name = Translator.translate("vehshop_sports"), description = ''},
+				{name = Translator.translate("vehshop_sportsClassic"), description = ''},
+				{name = Translator.translate("vehshop_super"), description = ''},
+				{name = Translator.translate("vehshop_muscle"), description = ''},
+				{name = Translator.translate("vehshop_offRoad"), description = ''},
+				{name = Translator.translate("vehshop_suvs"), description = ''},
+				{name = Translator.translate("vehshop_vans"), description = ''},
+				{name = Translator.translate("vehshop_cycles"), description = ''},
 			}
 		},
 		["compacts"] = {
@@ -318,7 +318,7 @@ function ShowVehshopBlips(bool)
 			-- 60 58 137
 			SetBlipSprite(blip,326)
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString('Vehicle shop')
+			AddTextComponentString(Translator.translate("vehshop_title"))
 			EndTextCommandSetBlipName(blip)
 			SetBlipAsShortRange(blip,true)
 			SetBlipAsMissionCreatorBlip(blip,true)
@@ -331,7 +331,7 @@ function ShowVehshopBlips(bool)
 				for i,b in ipairs(vehshop_blips) do
 					if IsPlayerWantedLevelGreater(GetPlayerIndex(),0) == false and vehshop.opened == false and IsPedInAnyVehicle(LocalPed(), true) == false and  GetDistanceBetweenCoords(b.pos.entering[1],b.pos.entering[2],b.pos.entering[3],GetEntityCoords(LocalPed())) < 5 then
 						DrawMarker(1,b.pos.entering[1],b.pos.entering[2],b.pos.entering[3],0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0)
-						drawTxt('Press ~g~ENTER~s~ to buy ~b~vehicle',0,1,0.5,0.8,0.6,255,255,255,255)
+						drawTxt(Translator.translate("vehshop_buyAsk"),0,1,0.5,0.8,0.6,255,255,255,255)
 						currentlocation = b
 						inrange = true
 					end
@@ -420,7 +420,7 @@ function CloseCreator()
 			while not HasModelLoaded(model) do
 				Citizen.Wait(0)
 			end
-			personalvehicle = CreateVehicle(model,pos[1],pos[2],pos[3],pos[4],true,false)
+			personalvehicle = CreateVehicle(model,pos[1],pos[2],pos[3],pos[4],true, false)
 			SetModelAsNoLongerNeeded(model)
 			for i,mod in pairs(mods) do
 				SetVehicleModKit(personalvehicle,0)
@@ -582,13 +582,13 @@ Citizen.CreateThread(function()
 								RequestModel(hash)
 								while not HasModelLoaded(hash) do
 									Citizen.Wait(0)
-									drawTxt("~b~Loading...",0,1,0.5,0.5,1.5,255,255,255,255)
+									drawTxt(Translator.translate("vehshop_loading"),0,1,0.5,0.5,1.5,255,255,255,255)
 
 								end
 								local veh = CreateVehicle(hash,pos[1],pos[2],pos[3],pos[4],false,false)
 								while not DoesEntityExist(veh) do
 									Citizen.Wait(0)
-									drawTxt("~b~Loading...",0,1,0.5,0.5,1.5,255,255,255,255)
+									drawTxt(Translator.translate("vehshop_loading"),0,1,0.5,0.5,1.5,255,255,255,255)
 								end
 								FreezeEntityPosition(veh,true)
 								SetEntityInvincible(veh,true)
@@ -652,31 +652,31 @@ function ButtonSelected(button)
 	local this = vehshop.currentmenu
 	local btn = button.name
 	if this == "main" then
-		if btn == "Vehicles" then
+		if btn == Translator.translate("vehshop_vehicles") then
 			OpenMenu('vehicles')
-		elseif btn == "Motorcycles" then
+		elseif btn == Translator.translate("vehshop_motorcycles") then
 			OpenMenu('motorcycles')
 		end
 	elseif this == "vehicles" then
-		if btn == "Sports" then
+		if btn == Translator.translate("vehshop_sports") then
 			OpenMenu('sports')
-		elseif btn == "Sedans" then
+		elseif btn == Translator.translate("vehshop_sedans") then
 			OpenMenu('sedans')
-		elseif btn == "Compacts" then
+		elseif btn == Translator.translate("vehshop_compacts") then
 			OpenMenu('compacts')
-		elseif btn == "Coupes" then
+		elseif btn == Translator.translate("vehshop_coupes") then
 			OpenMenu('coupes')
-		elseif btn == "Sports Classics" then
+		elseif btn == Translator.translate("vehshop_sportsClassic") then
 			OpenMenu("sportsclassics")
-		elseif btn == "Super" then
+		elseif btn == Translator.translate("vehshop_super") then
 			OpenMenu('super')
-		elseif btn == "Muscle" then
+		elseif btn == Translator.translate("vehshop_muscle") then
 			OpenMenu('muscle')
-		elseif btn == "Off-Road" then
+		elseif btn == Translator.translate("vehshop_offRoad") then
 			OpenMenu('offroad')
-		elseif btn == "SUVs" then
+		elseif btn == Translator.translate("vehshop_suvs") then
 			OpenMenu('suvs')
-		elseif btn == "Vans" then
+		elseif btn == Translator.translate("vehshop_vans") then
 			OpenMenu('vans')
 		end
 	elseif this == "compacts" or this == "coupes" or this == "sedans" or this == "sports" or this == "sportsclassics" or this == "super" or this == "muscle" or this == "offroad" or this == "suvs" or this == "vans" or this == "industrial" or this == "cycles" or this == "motorcycles" then
@@ -685,9 +685,13 @@ function ButtonSelected(button)
 end
 
 RegisterNetEvent('FinishMoneyCheckForVeh')
-AddEventHandler('FinishMoneyCheckForVeh', function()
-	boughtcar = true
-	CloseCreator()
+AddEventHandler('FinishMoneyCheckForVeh', function(moneyCheck)
+	if moneyCheck == true then
+		boughtcar = true
+		CloseCreator()
+	else
+		TriggerEvent("fs_freeroam:notify", "CHAR_SIMEON", 9, "Simeon", false, Translator.translate("vehshop_moreMoneyNeeded"))
+	end
 end)
 
 function OpenMenu(menu)
@@ -752,8 +756,10 @@ AddEventHandler('vehshop:spawnVehicle', function(v)
 		end
 		local playerCoords = GetEntityCoords(playerPed)
 
-		veh = CreateVehicle(car, playerCoords, 0.0, true, false)
+		veh = CreateVehicle(car, playerCoords, 0.0, true, true)
 		TaskWarpPedIntoVehicle(playerPed, veh, -1)
-		SetEntityInvincible(veh, true)
+		SetEntityAsMissionEntity(veh, true, true)
+		local id = NetworkGetNetworkIdFromEntity(veh)
+		SetNetworkIdCanMigrate(id, true)
 	end
 end)

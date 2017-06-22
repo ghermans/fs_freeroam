@@ -24,7 +24,7 @@ end
 
 function StartText()
   DrawMarker(1, -1171.42, -1572.72, 3.6636, 0, 0, 0, 0, 0, 0, 4.0, 4.0, 2.0, 178, 236, 93, 155, 0, 0, 2, 0, 0, 0, 0)
-  ShowInfo("Press ~INPUT_CONTEXT~ to buy a drink", 0)
+  ShowInfo(Translator.translate("stripclub_buy"), 0)
 end
 
 Citizen.CreateThread(function()
@@ -113,10 +113,9 @@ Citizen.CreateThread(function()
 
          -- Start mission
          if(IsControlPressed(1, 38)) then
-           TriggerServerEvent("es_freeroam:pay", tonumber(50))
-           Toxicated()
+           TriggerServerEvent("fs_freeroam:buy", tonumber(50), "drunk")
            Citizen.Wait(120000)
-           reality()
+           TriggerEvent("sober")
          end
        else
          showStartText = false
@@ -125,7 +124,9 @@ Citizen.CreateThread(function()
 end)
 
 
-function Toxicated()
+RegisterNetEvent("drunk")
+AddEventHandler("drunk", function()
+  Citizen.CreateThread(function()
   RequestAnimSet("move_m@drunk@verydrunk")
   while not HasAnimSetLoaded("move_m@drunk@verydrunk") do
     Citizen.Wait(0)
@@ -140,9 +141,12 @@ function Toxicated()
   SetPedMovementClipset(GetPlayerPed(-1), "move_m@drunk@verydrunk", true)
   SetPedIsDrunk(GetPlayerPed(-1), true)
   DoScreenFadeIn(1000)
-  end
+  end)
+end)
 
-  function reality()
+RegisterNetEvent("sober")
+AddEventHandler("sober", function()
+  Citizen.CreateThread(function()
     DoScreenFadeOut(1000)
     Citizen.Wait(1000)
     DoScreenFadeIn(1000)
@@ -151,6 +155,6 @@ function Toxicated()
     ResetPedMovementClipset(GetPlayerPed(-1), 0)
     SetPedIsDrunk(GetPlayerPed(-1), false)
     SetPedMotionBlur(GetPlayerPed(-1), false)
-    -- Stop the toxication
-    Citizen.Trace("Going back to reality\n")
-    end
+    Citizen.Trace(Translator.translate("stripclub_reality"))
+  end)
+end)
