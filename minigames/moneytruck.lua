@@ -381,7 +381,7 @@ function checkMoneyTruckTick()
 
   
     --Need to check if the trucks are still drivable if not pay
-    for i=0, 2, 1 do
+    for i=0, 6, 1 do
 
 
 
@@ -500,7 +500,7 @@ end
       SetFarDrawVehicles(true)
       --setup trucks
       if NetworkIsHost() then 
-        for i=0, 2, 1 do
+        for i=0, 6, 1 do
           spawnMoneyTruck(2000, i, true)
           Wait(1)
         end
