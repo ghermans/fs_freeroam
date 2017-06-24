@@ -160,7 +160,7 @@ function towTruckTick()
       if(GetDistanceBetweenCoords(playerCoords, Impound[0]["x"], Impound[0]["y"], Impound[0]["z"] ) < 5) then
         if(not showStartText) then
           
-          tow_ShowInfo("Press ~INPUT_SCRIPT_PAD_RIGHT~ to start", 0)
+          tow_ShowInfo("Press ~INPUT_PICKUP~ to start", 0)
 
           StartText()
           if(IsControlJustPressed(1, Keys["O"])) then
