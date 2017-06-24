@@ -1,5 +1,6 @@
 # fs_freeroam
-[![Version](https://img.shields.io/badge/release-0.1.5-green.svg)](https://github.com/FiveM-Scripts/fs_freeroam)
+[![Version](https://img.shields.io/badge/stable-0.1.4-brightgreen.svg)](https://github.com/FiveM-Scripts/fs_freeroam/tree/v0.1.4)
+[![Version](https://img.shields.io/badge/unstable-0.1.5-orange.svg)](https://github.com/FiveM-Scripts/fs_freeroam)
 [![License](https://img.shields.io/badge/license-GPL3-blue.svg)](LICENSE)
 <a href="https://discord.gg/eNJraMf"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
